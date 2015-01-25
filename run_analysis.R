@@ -1,24 +1,3 @@
-# getting_cleaning
-Repository for assignment
-
-## Purpose of the assignment
-
-The assignment involves getting data from the interesting project set up by the Smartlab - Non-Linear Complex Systems Laboratory, Genoa, Italy in 2012. See the following link for a description of that project:
-
-http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-
-Our assignment is to take the various data files from the project and perform the following operations: file merges, extracts of some variables, re-naming of the variables to make them more descriptive, replace numeric codes with their textual equivalents, and finally, to calculate the averages of multiple readings, producing a tidy dataset.
-
- The file **tidy_set.txt** containing the final result of these operations is in this repository.
- 
- ## The R script written to perform the operations is the file **run_analysis.R**, also in this repository. The script contains comment lines explaining what each operation is doing.
- 
- ###Details of how the R script works:
- One way the script can be run is for its whole text to opened then completely selected and run in the source frame of RStudio. In order for it to run, the following files provided in the project are needed to be present in the R working directory:
- features.txt, subject_test.txt, subject_train.txt, X_test.txt, X_train.txt, y_test.txt, y_train.txt. ###Note: my script also needs my file **better_variables.txt**, to be in the R working directory. It is available in this repository. You will see in task 4 that I write out a file of the unedited variables into a text file "unimproved_variables.txt". I then used a text editor to search and replace hyphens, brackets, initials "t" and "f". I also expanded acc and added "direction" after X Y and Z lines.
- 
- 
- The script code is reproduced here, giving all the comments explaining the procedures:
 ##Task 1 - Merging test and training datasets
 ## Read test data activity indexes and subject indexes
 ## into data frames
@@ -96,5 +75,4 @@ tidy_activity_groups <- group_by(hum_act_subset, activity)
 tidy_act_sub_grps <- group_by(tidy_activity_groups, subject)
 tidy_set <- summarise_each(tidy_act_sub_grps, funs(mean),-subject,-activity)
 write.table(tidy_set, file = "tidy_set.txt", row.names=FALSE)
-## That completes the task script 
- 
+## That completes the task script
